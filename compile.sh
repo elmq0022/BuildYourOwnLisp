@@ -1,1 +1,1 @@
-cc -std=c99 -Wall parsing.c mpc.c -lreadline -lm -o parsing
+cc -std=c99 -Wall eval.c mpc.c -lreadline -lm -o eval
