@@ -48,6 +48,11 @@ long eval(mpc_ast_t* t) {
     char* op = t->children[1]->contents;
 
     long x = eval(t->children[2]);
+   
+    /* negate a single number with the minus "-" operator */ 
+    if (t->children_num == 4 && strcmp(op, "-") == 0){
+        x = -1 * x;
+    }
 
     int i = 3;
     while (strstr(t->children[i]->tag, "expr")) {
