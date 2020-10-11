@@ -33,6 +33,10 @@ long eval_op(long x, char* op, long y) {
     if (strcmp(op, "-") == 0) {return x - y;}
     if (strcmp(op, "*") == 0) {return x * y;}
     if (strcmp(op, "/") == 0) {return x / y;}
+    if (strcmp(op, "%") == 0) {return x % y;}
+    if (strcmp(op, "^") == 0) {return powl(x, y);}
+    if (strcmp(op, "min") == 0) {return (x < y) ? x : y;}
+    if (strcmp(op, "max") == 0) {return (x > y) ? x : y;}
     return 0;
 }
 
@@ -64,12 +68,12 @@ int main(int argc, char** argv){
     mpc_parser_t* Lispy     = mpc_new("lispy");
 
     mpca_lang(MPCA_LANG_DEFAULT,
-            "                                                       \
-            number      : /-?[0-9]+/ ;                              \
-            operator    : '+' | '-' | '*' | '/' ;                   \
-            expr        : <number> | '(' <operator> <expr>+ ')' ;   \
-            lispy       : /^/ <operator> <expr>+ /$/ ;              \
-            ",                                                      \
+            "                                                                                   \
+            number      : /-?[0-9]+/ ;                                                          \
+            operator    : '+' | '-' | '*' | '/' | '%' | '^' | /min/ | /max/ ;                   \
+            expr        : <number> | '(' <operator> <expr>+ ')' ;                               \
+            lispy       : /^/ <operator> <expr>+ /$/ ;                                          \
+            ",                                                                                  \
             Number, Operator, Expr, Lispy);
 
 
