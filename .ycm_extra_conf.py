@@ -8,4 +8,4 @@ def Settings(**kwargs):
             '-lreadline',
             '-lm',
         ],
-    }
+}
