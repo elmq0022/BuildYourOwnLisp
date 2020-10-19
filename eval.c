@@ -167,7 +167,7 @@ lval *builtin_head(lval *a){
             "Function 'head' passed {}.");
 
     lval *v = lval_take(a, 0);
-    while(v->count > 1) { lval_del(lval_pop(v,1)); }
+    while(v->count > 1) { lval_del(lval_pop(v, 1)); }
     return v;
 }
 
